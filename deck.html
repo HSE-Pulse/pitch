@@ -1,0 +1,538 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" />
+  <title>HSE Pulse — Director-level pitch · 14 slides</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reset.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/theme/white.css" id="theme" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --hse-50: #e6f4ec; --hse-100: #c1e3cf; --hse-500: #009639; --hse-700: #005a30; --hse-900: #003318;
+      --ink-900: #0b1220; --ink-700: #1f2937; --ink-500: #475569; --ink-300: #94a3b8; --ink-100: #e2e8f0; --ink-50: #f8fafc;
+      --crisis: #dc2626; --warn: #f59e0b;
+    }
+    .reveal { font-family: 'Inter', system-ui, sans-serif; color: var(--ink-900); font-size: 24px; }
+    .reveal .slides { text-align: left; }
+    .reveal h1, .reveal h2, .reveal h3 { font-family: 'Inter', system-ui, sans-serif; font-weight: 800; letter-spacing: -0.02em; line-height: 1.1; text-transform: none; color: var(--ink-900); margin-bottom: .35em; }
+    .reveal h1 { font-size: 2.6em; }
+    .reveal h2 { font-size: 1.8em; }
+    .reveal h3 { font-size: 1.2em; color: var(--hse-700); }
+    .reveal p { line-height: 1.45; }
+    .reveal .num { font-family: 'JetBrains Mono', ui-monospace, monospace; font-feature-settings: "tnum"; font-weight: 700; }
+    .reveal small, .reveal .muted { color: var(--ink-500); font-size: 0.7em; }
+    .reveal a { color: var(--hse-700); }
+    .reveal section { padding: 0 !important; }
+    .reveal .stage { padding: 50px 64px; height: 100%; box-sizing: border-box; }
+
+    .reveal .eyebrow { font-size: 0.55em; text-transform: uppercase; letter-spacing: 0.18em; color: var(--hse-700); font-weight: 700; }
+    .reveal .crisis { color: var(--crisis); }
+    .reveal .warn { color: var(--warn); }
+    .reveal .hse { color: var(--hse-700); }
+
+    .reveal .grid { display: grid; gap: 14px; }
+    .reveal .grid-4 { grid-template-columns: repeat(4, 1fr); }
+    .reveal .grid-3 { grid-template-columns: repeat(3, 1fr); }
+    .reveal .grid-2 { grid-template-columns: repeat(2, 1fr); }
+    .reveal .card { background: white; border: 1px solid var(--ink-100); border-radius: 14px; padding: 18px; }
+    .reveal .card .label { font-size: 0.55em; text-transform: uppercase; letter-spacing: 0.12em; color: var(--ink-500); font-weight: 700; }
+    .reveal .card .figure { font-size: 1.9em; font-weight: 800; }
+    .reveal .card.green { background: var(--hse-50); border-color: var(--hse-100); }
+    .reveal .card.dark { background: var(--ink-900); color: white; border-color: var(--ink-900); }
+    .reveal .card.dark .label { color: var(--hse-100); }
+    .reveal .ribbon { border-left: 4px solid var(--hse-500); padding-left: 16px; }
+    .reveal table { font-size: 0.7em; border-collapse: collapse; width: 100%; }
+    .reveal table th { text-transform: uppercase; font-size: 0.6em; letter-spacing: 0.08em; color: var(--ink-500); padding: 8px 10px; text-align: left; border-bottom: 1px solid var(--ink-100); }
+    .reveal table td { padding: 8px 10px; border-bottom: 1px solid var(--ink-100); }
+    .reveal table tr.total td { background: var(--hse-50); color: var(--hse-700); font-weight: 700; }
+    .reveal ul.tight { line-height: 1.5; }
+    .reveal ul.tight li { margin: 0 0 8px 0; }
+    .reveal .pill { display: inline-block; padding: 3px 10px; border-radius: 999px; font-size: 0.55em; text-transform: uppercase; letter-spacing: 0.08em; font-weight: 700; }
+    .reveal .pill.green { background: var(--hse-50); color: var(--hse-700); }
+    .reveal .pill.warn { background: #fef3c7; color: #92400e; }
+    .reveal .pill.crisis { background: #fee2e2; color: #991b1b; }
+
+    /* Cover slide */
+    .reveal .cover {
+      background:
+        radial-gradient(at 20% 0%, rgba(0,150,57,0.20) 0%, transparent 45%),
+        radial-gradient(at 90% 100%, rgba(220,38,38,0.12) 0%, transparent 50%),
+        linear-gradient(180deg, #0b1220 0%, #1f2937 100%);
+      color: white; height: 100%; display: flex; flex-direction: column; justify-content: center;
+    }
+    .reveal .cover h1, .reveal .cover h2, .reveal .cover p, .reveal .cover small { color: white; }
+    .reveal .cover .eyebrow { color: var(--hse-100); }
+
+    /* Closing slide */
+    .reveal .closing { background: linear-gradient(135deg, var(--hse-700) 0%, var(--hse-900) 100%); color: white; height: 100%; display: flex; flex-direction: column; justify-content: center; }
+    .reveal .closing h1, .reveal .closing h2, .reveal .closing p { color: white; }
+    .reveal .closing .eyebrow { color: var(--hse-100); }
+  </style>
+</head>
+<body>
+<div class="reveal">
+  <div class="slides">
+
+    <!-- 1. COVER -->
+    <section data-background-color="#0b1220">
+      <div class="cover stage">
+        <div class="eyebrow">Pitch · Health Service Executive · Ireland</div>
+        <h1 style="margin-top: 24px;">HSE Pulse</h1>
+        <h2 style="font-weight: 500; opacity: 0.9; max-width: 18ch; font-size: 1.4em;">
+          One integrated AI platform for the acute hospital crisis Ireland is living in.
+        </h2>
+        <p style="margin-top: 36px; opacity: 0.85; font-size: 0.85em; max-width: 60ch;">
+          19 interoperable services covering ED triage, sepsis, deterioration, bed management,
+          oncology, waiting lists and discharge — running today. Aligned to the HSE
+          <em>"AI for Care 2026-2030"</em> Year-1 priorities.
+        </p>
+        <div style="margin-top: 56px; opacity: 0.8; font-size: 0.7em;">
+          <strong>Harishankar Somasundaram</strong> · MSc Artificial Intelligence (Ireland)<br/>
+          <span style="opacity: 0.7;">somasundaram.harishankar@gmail.com · Independent · April 2026</span>
+        </div>
+      </div>
+      <aside class="notes">
+        Open with thanks for the meeting and a sentence on context: I'm an MSc AI graduate from Ireland, I've built this end-to-end, I'm proposing a HIHI-framed pilot — not selling a product. Set 30-min expectation. Mention deck is 14 slides; happy to pause.
+      </aside>
+    </section>
+
+    <!-- 2. WHY YOU'RE HEARING THIS -->
+    <section>
+      <div class="stage">
+        <div class="eyebrow">Why this pitch, why now</div>
+        <h2>Three things made this the right month to bring it to you.</h2>
+        <div class="grid grid-3" style="margin-top: 28px;">
+          <div class="card">
+            <div class="label">January</div>
+            <div class="figure crisis">25,290<span style="font-size: 0.5em;">+</span></div>
+            <p style="font-size: 0.7em; color: var(--ink-500); margin-top: 4px;">on trolleys in Jan-Feb 2025 (INMO).</p>
+          </div>
+          <div class="card">
+            <div class="label">March</div>
+            <div class="figure hse">"AI for Care"</div>
+            <p style="font-size: 0.7em; color: var(--ink-500); margin-top: 4px;">Ireland's first national AI healthcare strategy published.</p>
+          </div>
+          <div class="card">
+            <div class="label">2026 budget</div>
+            <div class="figure hse">€263M</div>
+            <p style="font-size: 0.7em; color: var(--ink-500); margin-top: 4px;">Digital health line item for the year.</p>
+          </div>
+        </div>
+        <p style="margin-top: 32px; font-size: 0.85em; color: var(--ink-700); max-width: 50em;">
+          The crisis numbers are public. The strategy is published. The budget is allocated. What's
+          missing is an integrated AI substrate — and that's what I've built.
+        </p>
+      </div>
+      <aside class="notes">
+        Frame: the meeting isn't speculative. The political pressure is on you, the strategy direction is set, and the money exists. Don't dwell — these are setup, not the pitch.
+      </aside>
+    </section>
+
+    <!-- 3. THE GAP -->
+    <section>
+      <div class="stage">
+        <div class="eyebrow">The market gap</div>
+        <h2>Ireland has point-products. It does not have an integrated platform.</h2>
+        <table style="margin-top: 24px;">
+          <thead>
+            <tr><th>Vendor</th><th>Domain</th><th>Where deployed in Ireland</th></tr>
+          </thead>
+          <tbody>
+            <tr><td><strong>Aidoc</strong> (Israel)</td><td>Radiology AI triage</td><td>Mater — 15,600+ scans</td></tr>
+            <tr><td><strong>eAltra</strong> (Ireland)</td><td>Pre-chemo remote assessment</td><td>St James's pilot</td></tr>
+            <tr><td><strong>Oneview</strong> (Ireland)</td><td>Patient engagement</td><td>CHI · 7-year deal</td></tr>
+            <tr><td><strong>UiPath</strong></td><td>RPA automation</td><td>HSE — 50+ processes</td></tr>
+            <tr><td><strong>Qventus / TeleTracking / GE Command Centre</strong></td><td>Hospital operations</td><td>Not deployed in Ireland</td></tr>
+          </tbody>
+        </table>
+        <p style="margin-top: 24px; font-size: 0.85em; color: var(--ink-700); max-width: 56em;">
+          <strong>No vendor</strong> currently offers ED triage + sepsis + deterioration + bed
+          management + oncology + waiting-list intelligence in a single integrated system.
+          That is the gap this platform fills.
+        </p>
+      </div>
+      <aside class="notes">
+        Be matter-of-fact. Not bashing competitors — just stating that the integration layer is genuinely empty. This is the strategic reason to engage.
+      </aside>
+    </section>
+
+    <!-- 4. STRATEGY ALIGNMENT -->
+    <section>
+      <div class="stage">
+        <div class="eyebrow">Strategic alignment</div>
+        <h2>Mapped to <span class="hse">AI for Care 2026-2030</span> · 4 of 5 Year-1 priorities already addressed.</h2>
+        <table style="margin-top: 22px;">
+          <thead>
+            <tr><th style="width: 55%;">AI for Care Year-1 priority</th><th>Platform module</th><th>Status</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Demand &amp; Capacity Management</td><td>Hospital Ops · Bed Mgmt · ED Flow · Trolley Watch · Discharge Lounge</td><td><span class="pill green">Built</span></td></tr>
+            <tr><td>AI scribe — cut documentation 40%</td><td>Clinical Scribe (app_10) — SOAP + ICD-10</td><td><span class="pill green">Built</span></td></tr>
+            <tr><td>Support function automation (HR, finance, procurement)</td><td>Hospital ERP (app_15)</td><td><span class="pill green">Built</span></td></tr>
+            <tr><td>Certified AI for radiology</td><td>Out of scope — complementary to Aidoc</td><td><span class="pill warn">N/A</span></td></tr>
+            <tr><td>Contact centre automation</td><td>Out of scope v1</td><td><span class="pill warn">Roadmap</span></td></tr>
+          </tbody>
+        </table>
+        <p style="margin-top: 22px; font-size: 0.8em; color: var(--ink-500);">
+          Sláintecare workstreams covered: demand &amp; capacity · waiting-time reduction · care closer to home (virtual ward roadmap) · integrated electronic records (HL7 FHIR R4 via app_19).
+        </p>
+      </div>
+      <aside class="notes">
+        Pause here — let the table land. Director-level message: "this is not a vendor doing strategy theatre; this maps line-by-line."
+      </aside>
+    </section>
+
+    <!-- 5. THE PLATFORM -->
+    <section>
+      <div class="stage">
+        <div class="eyebrow">The platform</div>
+        <h2>19 interoperable services. One unified clinical dashboard.</h2>
+        <div class="grid grid-4" style="margin-top: 22px; font-size: 0.7em;">
+          <div class="card"><strong>ED Triage</strong><div class="muted">Acuity · disposition · LOS</div></div>
+          <div class="card"><strong>Sepsis ICU</strong><div class="muted">LSTM · 4h horizon</div></div>
+          <div class="card"><strong>Hospital Ops</strong><div class="muted">DES + MARL</div></div>
+          <div class="card"><strong>Oncology AI</strong><div class="muted">Readmission + mortality</div></div>
+          <div class="card"><strong>Patient Journey</strong><div class="muted">Timeline · vitals · labs</div></div>
+          <div class="card"><strong>Clinical Chat</strong><div class="muted">LLM · multi-module RAG</div></div>
+          <div class="card"><strong>Data / Twin</strong><div class="muted">Digital twin + sim</div></div>
+          <div class="card"><strong>Bed Management</strong><div class="muted">Real-time + predictive</div></div>
+          <div class="card"><strong>Waiting List</strong><div class="muted">ML prioritisation</div></div>
+          <div class="card"><strong>Clinical Scribe</strong><div class="muted">SOAP · ICD-10</div></div>
+          <div class="card"><strong>ED Flow</strong><div class="muted">PET breach prediction</div></div>
+          <div class="card"><strong>Hospital ERP</strong><div class="muted">Finance · rostering</div></div>
+          <div class="card"><strong>Trolley Watch</strong><div class="muted">INMO-style counter</div></div>
+          <div class="card"><strong>GDPR</strong><div class="muted">Audit · DSAR · DPIA</div></div>
+          <div class="card"><strong>XAI</strong><div class="muted">SHAP · decision log</div></div>
+          <div class="card"><strong>FHIR Gateway</strong><div class="muted">HL7 FHIR R4 · NSCR-ready</div></div>
+          <div class="card"><strong>Deterioration</strong><div class="muted">NEWS2 · PEWS · IMEWS</div></div>
+          <div class="card"><strong>Discharge Lounge</strong><div class="muted">Predicted handoff</div></div>
+          <div class="card green"><strong>Alerts</strong><div class="muted">Coalesced · WebSocket · ack</div></div>
+        </div>
+        <p style="margin-top: 18px; font-size: 0.7em; color: var(--ink-500);">
+          FastAPI + MongoDB + Kafka (Redpanda) + React 19 + TS + Tailwind 4. Helm charts ready. Linkerd mesh ready. Prometheus / Loki / Jaeger / OpenTelemetry across every service.
+        </p>
+      </div>
+      <aside class="notes">
+        This slide is not for memorisation — it's a credibility prop. "Each tile is a real running service. I'll happily demo any of them."
+      </aside>
+    </section>
+
+    <!-- 6. SCREENSHOT/LIVE DEMO -->
+    <section>
+      <div class="stage">
+        <div class="eyebrow">Running today</div>
+        <h2>Not slideware. The platform runs end-to-end.</h2>
+        <div class="grid grid-3" style="margin-top: 28px;">
+          <div class="card dark">
+            <div class="label">Backends</div>
+            <div class="figure">19</div>
+            <div class="muted" style="color: #94a3b8;">FastAPI services, ports 8201-8222</div>
+          </div>
+          <div class="card dark">
+            <div class="label">Domain events</div>
+            <div class="figure">22</div>
+            <div class="muted" style="color: #94a3b8;">Kafka topics on Redpanda spine</div>
+          </div>
+          <div class="card dark">
+            <div class="label">Dashboard pages</div>
+            <div class="figure">15+</div>
+            <div class="muted" style="color: #94a3b8;">Unified React/TS clinical UI</div>
+          </div>
+        </div>
+        <div style="margin-top: 28px; padding: 18px; background: var(--ink-50); border-radius: 12px; font-size: 0.75em; color: var(--ink-700);">
+          <strong>Live demo available on 24-hour notice:</strong> ED Triage with SHAP rationale ·
+          Sepsis ICU with NEWS2 trend · MARL bed-board simulation · per-patient unified view with
+          deterioration overlay · alerts feed with WebSocket coalescing.
+        </div>
+      </div>
+      <aside class="notes">
+        If you have a laptop with the local stack running, demo the patient detail page here. The "running today" point is the slide that disarms director-level skepticism.
+      </aside>
+    </section>
+
+    <!-- 7. IMPACT (single hospital) -->
+    <section>
+      <div class="stage">
+        <div class="eyebrow">Quantified impact · one Model 4 hospital</div>
+        <h2>What this looks like at <span class="hse">~600 beds, 75k ED attendances/yr</span>.</h2>
+        <div class="grid grid-4" style="margin-top: 24px;">
+          <div class="card green">
+            <div class="label">Annual benefit</div>
+            <div class="figure hse">€25-35M</div>
+            <div class="muted">Direct + deferred capex + time recovery</div>
+          </div>
+          <div class="card">
+            <div class="label">Bed-days released</div>
+            <div class="figure">20,000</div>
+            <div class="muted">~1.0h shorter mean LOS</div>
+          </div>
+          <div class="card">
+            <div class="label">Sepsis lives saved</div>
+            <div class="figure">12-25</div>
+            <div class="muted">Per ICU · 4-hour horizon</div>
+          </div>
+          <div class="card">
+            <div class="label">Avoided onco readmits</div>
+            <div class="figure">120-160</div>
+            <div class="muted">15-20% reduction</div>
+          </div>
+        </div>
+        <p style="margin-top: 24px; font-size: 0.75em; color: var(--ink-500); max-width: 55em;">
+          Mid-case figures, modelled on HSE BIU benchmarks and peer-reviewed clinical AI literature
+          applied to Irish census. Conservative — the bed-day value alone, by itself, justifies the
+          platform.
+        </p>
+      </div>
+      <aside class="notes">
+        Lead with the €25-35M number. Then the 20,000 bed-days as the operationally crisp version. Then the lives-saved number for the human dimension. Don't over-explain — let the numbers carry it.
+      </aside>
+    </section>
+
+    <!-- 8. IMPACT (national) -->
+    <section>
+      <div class="stage">
+        <div class="eyebrow">Quantified impact · HSE national</div>
+        <h2>Across the ~50 acute estate, mid-case envelope:</h2>
+        <div class="grid grid-3" style="margin-top: 26px;">
+          <div class="card green">
+            <div class="label">Bed-days released</div>
+            <div class="figure hse">€250-400M</div>
+            <div class="muted">National notional throughput</div>
+          </div>
+          <div class="card">
+            <div class="label">Sepsis lives, nationally</div>
+            <div class="figure">250-400</div>
+            <div class="muted">Per year</div>
+          </div>
+          <div class="card">
+            <div class="label">Consultant capacity returned</div>
+            <div class="figure">5-8%</div>
+            <div class="muted">AI for Care Y1 documentation target</div>
+          </div>
+        </div>
+        <div style="margin-top: 28px; padding: 18px 22px; background: var(--ink-50); border-radius: 12px; font-size: 0.78em; color: var(--ink-700); max-width: 60em;">
+          The case is not <em>one</em> dominant benefit. It is the compounding effect of delivering
+          Sláintecare's interlocking objectives — capacity, throughput, integrated records — through
+          one procurement rather than seven point-products.
+        </div>
+      </div>
+      <aside class="notes">
+        This is the strategic pitch — the integration argument. After this slide pause for questions before going into the business case table.
+      </aside>
+    </section>
+
+    <!-- 9. ROI table -->
+    <section>
+      <div class="stage" style="padding-top: 36px;">
+        <div class="eyebrow">Three-year business case · single Model 4 site</div>
+        <h2 style="margin-bottom: 16px;">Payback under 4 months. Net benefit Y3 ≈ €23.6M.</h2>
+        <table>
+          <thead>
+            <tr><th>Line item</th><th style="text-align: right;">Year 1</th><th style="text-align: right;">Year 2</th><th style="text-align: right;">Year 3</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Platform licence + integration</td><td style="text-align: right;" class="num">€1.8M</td><td style="text-align: right;" class="num">€1.2M</td><td style="text-align: right;" class="num">€1.2M</td></tr>
+            <tr><td>HSE-side implementation effort</td><td style="text-align: right;" class="num">€0.6M</td><td style="text-align: right;" class="num">€0.3M</td><td style="text-align: right;" class="num">€0.2M</td></tr>
+            <tr><td><strong>Total cost</strong></td><td style="text-align: right;" class="num"><strong>€2.4M</strong></td><td style="text-align: right;" class="num"><strong>€1.5M</strong></td><td style="text-align: right;" class="num"><strong>€1.4M</strong></td></tr>
+            <tr><td>Bed-days released (mid-case)</td><td style="text-align: right;" class="num">€8M</td><td style="text-align: right;" class="num">€18M</td><td style="text-align: right;" class="num">€22M</td></tr>
+            <tr><td>Avoided oncology readmissions</td><td style="text-align: right;" class="num">€0.4M</td><td style="text-align: right;" class="num">€0.8M</td><td style="text-align: right;" class="num">€1.0M</td></tr>
+            <tr><td>Documentation-time recovery</td><td style="text-align: right;" class="num">€0.8M</td><td style="text-align: right;" class="num">€1.6M</td><td style="text-align: right;" class="num">€2.0M</td></tr>
+            <tr class="total"><td>Net benefit</td><td style="text-align: right;" class="num">€6.8M</td><td style="text-align: right;" class="num">€18.9M</td><td style="text-align: right;" class="num">€23.6M</td></tr>
+          </tbody>
+        </table>
+        <p style="margin-top: 18px; font-size: 0.7em; color: var(--ink-500);">
+          Bed-day value is notional throughput. Cash equivalent depends on whether released capacity
+          admits more elective patients (revenue) or closes winter-pressure escalation beds (cost
+          avoidance). Both are valid HSE business-case framings.
+        </p>
+      </div>
+      <aside class="notes">
+        Let the director read the table. Don't narrate it. Then say one line: "Even at a fraction of these mid-case numbers, the case stands."
+      </aside>
+    </section>
+
+    <!-- 10. PILOT PROPOSAL -->
+    <section>
+      <div class="stage">
+        <div class="eyebrow">Proposed pilot</div>
+        <h2>One site. One front-door bundle. 12 months. <span class="hse">HIHI-framed.</span></h2>
+        <div class="grid grid-2" style="margin-top: 22px;">
+          <div class="card green">
+            <div class="label">Lead site</div>
+            <div style="font-size: 1.4em; font-weight: 800; margin-top: 6px;">Mater Misericordiae</div>
+            <p style="font-size: 0.75em; color: var(--ink-700); margin-top: 4px;">Already runs Aidoc · innovation-friendly executive · large urban ED.</p>
+            <div style="margin-top: 12px; font-size: 0.7em;" class="hse"><strong>Bundle:</strong> ED Triage + ED Flow + Trolley Watch + Bed Management</div>
+          </div>
+          <div class="card">
+            <div class="label">Vehicle</div>
+            <div style="font-size: 1.4em; font-weight: 800; margin-top: 6px;">HIHI clinical pilot</div>
+            <p style="font-size: 0.75em; color: var(--ink-700); margin-top: 4px;">12-month structured pilot framework. Pre-approved for AI evaluation. Zero up-front cost to HSE.</p>
+            <div style="margin-top: 12px; font-size: 0.7em;" class="hse"><strong>Output:</strong> three-site reference deck for HSE Demand &amp; Capacity Visualisation procurement</div>
+          </div>
+        </div>
+        <p style="margin-top: 22px; font-size: 0.8em; color: var(--ink-500); max-width: 60em;">
+          St James's (oncology + discharge), UH Galway (ICU + ops), and Beaumont (ED + deterioration)
+          follow as Phase 2-4 reference sites — giving you three independent clinical references
+          inside 12 months.
+        </p>
+      </div>
+      <aside class="notes">
+        The "zero up-front cost" line is the unblocker for director-level skepticism. The HIHI framework genuinely de-risks this.
+      </aside>
+    </section>
+
+    <!-- 11. ROADMAP -->
+    <section>
+      <div class="stage">
+        <div class="eyebrow">12-month roadmap</div>
+        <h2>What gets delivered, by quarter.</h2>
+        <div class="grid grid-4" style="margin-top: 24px; font-size: 0.78em;">
+          <div class="card ribbon">
+            <div class="label">Q1</div>
+            <strong style="display: block; margin-top: 6px;">Localisation + dossier</strong>
+            <ul class="tight" style="margin-top: 8px; padding-left: 16px; color: var(--ink-700);">
+              <li>MTS retrain</li>
+              <li>ICD-10-AM mapping</li>
+              <li>EU AI Act files</li>
+              <li>DPIAs</li>
+            </ul>
+          </div>
+          <div class="card ribbon">
+            <div class="label">Q2</div>
+            <strong style="display: block; margin-top: 6px;">Mater pilot live</strong>
+            <ul class="tight" style="margin-top: 8px; padding-left: 16px; color: var(--ink-700);">
+              <li>Front-door bundle in production</li>
+              <li>FHIR Gateway complete</li>
+              <li>Irish validation cohort begins</li>
+            </ul>
+          </div>
+          <div class="card ribbon">
+            <div class="label">Q3</div>
+            <strong style="display: block; margin-top: 6px;">St James's + HIHI submission</strong>
+            <ul class="tight" style="margin-top: 8px; padding-left: 16px; color: var(--ink-700);">
+              <li>Onco + Discharge + Bed Mgmt live</li>
+              <li>HIHI.AI 2026 national call</li>
+              <li>Two reference sites</li>
+            </ul>
+          </div>
+          <div class="card ribbon">
+            <div class="label">Q4</div>
+            <strong style="display: block; margin-top: 6px;">UH Galway + national posture</strong>
+            <ul class="tight" style="margin-top: 8px; padding-left: 16px; color: var(--ink-700);">
+              <li>ICU bundle live</li>
+              <li>Three-site reference deck</li>
+              <li>HSE Demand &amp; Capacity engagement</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <aside class="notes">
+        Read it as a story, not a list: "Q1 we get compliant. Q2 we go live at one site. Q3 we add a second and submit to HIHI. Q4 we add a third and we're in front of national procurement with three references."
+      </aside>
+    </section>
+
+    <!-- 12. RISKS -->
+    <section>
+      <div class="stage">
+        <div class="eyebrow">Honest risk picture</div>
+        <h2>What could go wrong, and what we're doing about it.</h2>
+        <table style="margin-top: 22px;">
+          <thead>
+            <tr><th>Risk</th><th>Severity</th><th>Mitigation</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>MIMIC-IV (US data) → Irish population shift may degrade AUROC</td><td><span class="pill crisis">High</span></td><td>Irish validation cohort during pilot; per-site recalibration</td></tr>
+            <tr><td>Triage uses ESI labels; Irish EDs use Manchester Triage System</td><td><span class="pill warn">Medium</span></td><td>MTS mapping layer; retrain per pilot site (Q1)</td></tr>
+            <tr><td>National EHR vendor selection lands without mature FHIR</td><td><span class="pill warn">Medium</span></td><td>FHIR Gateway is bidirectional; degrades to HL7 v2 if forced</td></tr>
+            <tr><td>HIQA AI guidance (2026) introduces new obligations</td><td><span class="pill warn">Medium</span></td><td>Engage HIQA Health Information team during Phase 1</td></tr>
+            <tr><td>Public-procurement timelines may delay HSE-wide rollout</td><td><span class="pill warn">Medium</span></td><td>Run under HIHI 12-month framework — pre-approved</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <aside class="notes">
+        Don't skip this slide. Director-level audiences trust the pitch more after seeing honest risks. The MIMIC→Irish shift is the one I get asked about most — name it before they do.
+      </aside>
+    </section>
+
+    <!-- 13. WHY ME -->
+    <section>
+      <div class="stage">
+        <div class="eyebrow">Why me</div>
+        <h2>Built solo. By a recent MSc AI graduate <span class="hse">in Ireland</span>.</h2>
+        <div style="margin-top: 22px; font-size: 0.85em; color: var(--ink-700); max-width: 56em; line-height: 1.55;">
+          <p>
+            I'm <strong>Harishankar Somasundaram</strong>, MSc Artificial Intelligence (Ireland).
+            I built this platform end-to-end as the technical embodiment of a thesis proposition:
+            Ireland's acute hospital crisis is not solvable by another point-product, and what is
+            missing is a single integrated AI substrate covering the front door, the ward, the
+            ICU, the cancer pathway and the back door.
+          </p>
+          <p style="margin-top: 14px;">
+            I'm <strong>not</strong> proposing a sale. I'm proposing a collaboration — under HIHI,
+            under a research framework, or under HSE's AI &amp; Automation Centre of Excellence,
+            whichever is most compatible with how you'd like to evaluate it.
+          </p>
+        </div>
+      </div>
+      <aside class="notes">
+        Slow this down. Eye contact. The "collaboration not sale" framing is the entire reason a Director takes the meeting. They've been pitched by vendors a thousand times.
+      </aside>
+    </section>
+
+    <!-- 14. THE ASK -->
+    <section data-background-color="#005a30">
+      <div class="closing stage">
+        <div class="eyebrow">The ask</div>
+        <h1 style="margin-top: 22px; font-size: 2.4em;">A 30-minute demo. <br/>One pilot site. <br/>Zero up-front cost under HIHI.</h1>
+        <div style="margin-top: 38px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; font-size: 0.78em;">
+          <div style="background: rgba(255,255,255,0.1); border-radius: 12px; padding: 18px;">
+            <div style="font-size: 0.7em; opacity: 0.8; text-transform: uppercase; letter-spacing: 0.1em;">Step 1</div>
+            <strong style="display: block; margin-top: 6px;">30-min demo</strong>
+            <div style="opacity: 0.85; margin-top: 4px;">You + CCIO + one clinical lead.</div>
+          </div>
+          <div style="background: rgba(255,255,255,0.1); border-radius: 12px; padding: 18px;">
+            <div style="font-size: 0.7em; opacity: 0.8; text-transform: uppercase; letter-spacing: 0.1em;">Step 2</div>
+            <strong style="display: block; margin-top: 6px;">Pick the site</strong>
+            <div style="opacity: 0.85; margin-top: 4px;">Mater preferred · open to alternatives.</div>
+          </div>
+          <div style="background: rgba(255,255,255,0.1); border-radius: 12px; padding: 18px;">
+            <div style="font-size: 0.7em; opacity: 0.8; text-transform: uppercase; letter-spacing: 0.1em;">Step 3</div>
+            <strong style="display: block; margin-top: 6px;">HIHI submission</strong>
+            <div style="opacity: 0.85; margin-top: 4px;">Q3-Q4 2026 national call.</div>
+          </div>
+        </div>
+        <div style="margin-top: 48px; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.2); font-size: 0.78em;">
+          <strong style="font-size: 1.2em;">Harishankar Somasundaram</strong><br/>
+          <span style="opacity: 0.85;">MSc Artificial Intelligence · Ireland</span><br/>
+          <span style="opacity: 0.85;">somasundaram.harishankar@gmail.com</span>
+        </div>
+      </div>
+      <aside class="notes">
+        Don't add anything. The slide is the close. Wait for the question.
+      </aside>
+    </section>
+
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/plugin/notes/notes.js"></script>
+<script>
+  Reveal.initialize({
+    hash: true,
+    width: 1280,
+    height: 800,
+    margin: 0.04,
+    minScale: 0.2,
+    maxScale: 1.6,
+    controls: true,
+    progress: true,
+    slideNumber: 'c/t',
+    transition: 'slide',
+    plugins: [ RevealNotes ]
+  });
+</script>
+</body>
+</html>

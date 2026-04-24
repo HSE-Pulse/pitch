@@ -1,0 +1,711 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>HSE Pulse — An integrated AI platform for the Irish acute hospital | Pitch to HSE</title>
+  <meta name="description" content="An integrated AI platform addressing Ireland's trolley crisis, sepsis mortality, oncology readmission, and waiting list — built by an MSc AI graduate in Ireland for HSE collaboration." />
+  <meta name="theme-color" content="#005a30" />
+  <meta property="og:title" content="HSE Pulse — Integrated AI for the Irish acute hospital" />
+  <meta property="og:description" content="Pitch to HSE: 19-service AI platform addressing trolleys, sepsis, oncology, waiting lists, deterioration. Aligned to AI for Care 2026-2030." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://hse.harishankar.info/" />
+  <link rel="canonical" href="https://hse.harishankar.info/" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            hse:    { 50: "#e6f4ec", 100: "#c1e3cf", 500: "#009639", 600: "#007d2e", 700: "#005a30", 900: "#003318" },
+            ink:    { 900: "#0b1220", 800: "#111827", 700: "#1f2937", 500: "#475569", 400: "#64748b", 300: "#94a3b8", 200: "#cbd5e1", 100: "#e2e8f0", 50: "#f8fafc" },
+            crisis: { 50: "#fef2f2", 500: "#dc2626", 700: "#b91c1c" },
+            warn:   { 500: "#f59e0b" },
+          },
+          fontFamily: {
+            sans: ["Inter", "system-ui", "sans-serif"],
+            mono: ["JetBrains Mono", "ui-monospace", "monospace"],
+          },
+        },
+      },
+    };
+  </script>
+  <style>
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', system-ui, sans-serif; -webkit-font-smoothing: antialiased; }
+    .num-mono { font-family: 'JetBrains Mono', ui-monospace, monospace; font-feature-settings: "tnum"; }
+    .grad-hero {
+      background:
+        radial-gradient(at 20% 0%, rgba(0,150,57,0.15) 0%, transparent 45%),
+        radial-gradient(at 90% 100%, rgba(220,38,38,0.10) 0%, transparent 50%),
+        linear-gradient(180deg, #0b1220 0%, #111827 60%, #1f2937 100%);
+    }
+    .grad-section { background: linear-gradient(180deg, #f8fafc 0%, #ffffff 100%); }
+    .reveal-up { opacity: 0; transform: translateY(20px); transition: opacity .7s ease-out, transform .7s ease-out; }
+    .reveal-up.visible { opacity: 1; transform: translateY(0); }
+    .stat-card { transition: transform .25s ease, box-shadow .25s ease; }
+    .stat-card:hover { transform: translateY(-3px); box-shadow: 0 12px 30px -10px rgba(0,0,0,.15); }
+    .ribbon::before {
+      content: ""; position: absolute; left: -1px; top: 0; bottom: 0; width: 4px;
+      background: linear-gradient(180deg, #009639 0%, #007d2e 100%); border-radius: 2px;
+    }
+    .pulse-dot { animation: pulse 2s ease-in-out infinite; }
+    @keyframes pulse { 0%,100% { opacity: 1; transform: scale(1); } 50% { opacity: .5; transform: scale(1.4); } }
+    @media print {
+      .no-print { display: none !important; }
+      section { page-break-inside: avoid; break-inside: avoid; }
+      .grad-hero { background: white !important; color: black !important; }
+      .grad-hero * { color: black !important; }
+    }
+  </style>
+</head>
+<body class="bg-white text-ink-900">
+
+<!-- Sticky nav -->
+<nav class="no-print sticky top-0 z-40 backdrop-blur bg-white/85 border-b border-ink-100">
+  <div class="max-w-6xl mx-auto px-6 py-3 flex items-center justify-between">
+    <div class="flex items-center gap-2.5">
+      <div class="w-8 h-8 rounded-lg bg-hse-700 text-white flex items-center justify-center text-sm font-bold">P</div>
+      <span class="font-semibold tracking-tight">HSE Pulse</span>
+      <span class="text-xs text-ink-400 hidden sm:inline">· Integrated AI for the Irish acute hospital</span>
+    </div>
+    <div class="hidden md:flex items-center gap-6 text-sm text-ink-500">
+      <a href="#crisis" class="hover:text-ink-900">Crisis</a>
+      <a href="#strategy" class="hover:text-ink-900">Strategy</a>
+      <a href="#platform" class="hover:text-ink-900">Platform</a>
+      <a href="#impact" class="hover:text-ink-900">Impact</a>
+      <a href="#pilot" class="hover:text-ink-900">Pilot</a>
+      <a href="#about" class="hover:text-ink-900">About</a>
+      <a href="deck.html" class="text-hse-700 font-medium hover:text-hse-900">Deck →</a>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="grad-hero text-white">
+  <div class="max-w-6xl mx-auto px-6 pt-16 pb-20 md:pt-24 md:pb-28">
+    <div class="flex items-center gap-2 text-xs tracking-widest uppercase text-hse-100 mb-5">
+      <span class="w-2 h-2 rounded-full bg-hse-500 pulse-dot"></span>
+      Pitch · Health Service Executive · Ireland
+    </div>
+    <h1 class="text-4xl md:text-6xl font-extrabold leading-[1.05] tracking-tight max-w-4xl">
+      One integrated AI platform for the<br/>
+      <span class="text-hse-100">acute hospital crisis Ireland is living in.</span>
+    </h1>
+    <p class="mt-7 text-lg md:text-xl text-ink-200 max-w-3xl leading-relaxed">
+      19 interoperable services covering ED triage, sepsis, deterioration, bed management,
+      oncology risk, waiting-list intelligence and discharge orchestration — built end-to-end,
+      running today, designed against the HSE <em>"AI for Care 2026-2030"</em> Year-1 priorities.
+    </p>
+
+    <div class="mt-10 grid grid-cols-2 md:grid-cols-4 gap-3 max-w-5xl">
+      <div class="stat-card rounded-xl bg-white/5 border border-white/10 backdrop-blur p-4">
+        <div class="text-3xl md:text-4xl font-bold num-mono text-crisis-500">25,290<span class="text-xl">+</span></div>
+        <div class="text-xs text-ink-300 mt-1.5">patients on trolleys, Jan-Feb 2025 <span class="text-ink-400">(INMO)</span></div>
+      </div>
+      <div class="stat-card rounded-xl bg-white/5 border border-white/10 backdrop-blur p-4">
+        <div class="text-3xl md:text-4xl font-bold num-mono text-crisis-500">750k</div>
+        <div class="text-xs text-ink-300 mt-1.5">on hospital waiting lists <span class="text-ink-400">(HSE)</span></div>
+      </div>
+      <div class="stat-card rounded-xl bg-white/5 border border-white/10 backdrop-blur p-4">
+        <div class="text-3xl md:text-4xl font-bold num-mono text-warn-500">64%</div>
+        <div class="text-xs text-ink-300 mt-1.5">waiting longer than target <span class="text-ink-400">(HSE)</span></div>
+      </div>
+      <div class="stat-card rounded-xl bg-white/5 border border-white/10 backdrop-blur p-4">
+        <div class="text-3xl md:text-4xl font-bold num-mono text-hse-500">€263M</div>
+        <div class="text-xs text-ink-300 mt-1.5">2026 Digital Health budget <span class="text-ink-400">(DoH)</span></div>
+      </div>
+    </div>
+
+    <div class="mt-10 flex flex-wrap gap-3">
+      <a href="#pilot" class="inline-flex items-center gap-2 bg-hse-500 hover:bg-hse-600 text-white font-semibold px-5 py-3 rounded-lg shadow-lg shadow-hse-700/30">
+        Read the pilot proposal →
+      </a>
+      <a href="deck.html" class="inline-flex items-center gap-2 bg-white/10 hover:bg-white/20 border border-white/20 text-white font-medium px-5 py-3 rounded-lg">
+        Open the pitch deck
+      </a>
+      <a href="#about" class="inline-flex items-center gap-2 text-ink-200 hover:text-white px-5 py-3">
+        About me
+      </a>
+    </div>
+
+    <div class="mt-10 text-xs text-ink-400 max-w-2xl">
+      Independent submission by <span class="text-white font-medium">Harishankar Somasundaram</span>,
+      MSc Artificial Intelligence (Ireland). Open to a HIHI-framed pilot, a research collaboration,
+      or evaluation under the HSE AI &amp; Automation Centre of Excellence.
+    </div>
+  </div>
+</section>
+
+<!-- CRISIS -->
+<section id="crisis" class="bg-ink-50 border-t border-ink-100">
+  <div class="max-w-6xl mx-auto px-6 py-16 md:py-20">
+    <div class="grid md:grid-cols-3 gap-10">
+      <div class="md:col-span-1">
+        <div class="text-xs uppercase tracking-widest text-hse-700 font-semibold">01 · The crisis</div>
+        <h2 class="text-3xl md:text-4xl font-bold mt-2 leading-tight">
+          The numbers HSE wakes up to.
+        </h2>
+        <p class="mt-4 text-ink-500 leading-relaxed">
+          These are not vendor projections. They are figures published by INMO, the HSE,
+          the Department of Health and the NTPF in the last 12 months. Every one of them
+          maps to a specific platform module.
+        </p>
+      </div>
+
+      <div class="md:col-span-2 grid sm:grid-cols-2 gap-3">
+        <div class="rounded-xl bg-white border border-ink-100 p-5 ribbon relative">
+          <div class="text-xs uppercase tracking-wider text-ink-400">Single-day trolley record</div>
+          <div class="text-3xl font-bold num-mono text-crisis-500 mt-1">501</div>
+          <div class="text-sm text-ink-500 mt-2">August 2025. Daily political headlines. Direct INMO reporting.</div>
+          <div class="mt-3 text-[11px] uppercase tracking-wider text-hse-700 font-semibold">→ ED Flow · Trolley Watch · Bed Management</div>
+        </div>
+        <div class="rounded-xl bg-white border border-ink-100 p-5 ribbon relative">
+          <div class="text-xs uppercase tracking-wider text-ink-400">Extra ED attendees per day</div>
+          <div class="text-3xl font-bold num-mono text-crisis-500 mt-1">700+</div>
+          <div class="text-sm text-ink-500 mt-2">vs. prior year, across the system. Front-door pressure is structural, not seasonal.</div>
+          <div class="mt-3 text-[11px] uppercase tracking-wider text-hse-700 font-semibold">→ ED Triage · ED Flow Optimizer</div>
+        </div>
+        <div class="rounded-xl bg-white border border-ink-100 p-5 ribbon relative">
+          <div class="text-xs uppercase tracking-wider text-ink-400">6-hour PET compliance</div>
+          <div class="text-3xl font-bold num-mono text-warn-500 mt-1">&lt;70%</div>
+          <div class="text-sm text-ink-500 mt-2">at most acute sites. Ireland's national ED target is being missed nationwide.</div>
+          <div class="mt-3 text-[11px] uppercase tracking-wider text-hse-700 font-semibold">→ ED Flow Optimizer</div>
+        </div>
+        <div class="rounded-xl bg-white border border-ink-100 p-5 ribbon relative">
+          <div class="text-xs uppercase tracking-wider text-ink-400">Sepsis mortality penalty</div>
+          <div class="text-3xl font-bold num-mono text-crisis-500 mt-1">4-8%</div>
+          <div class="text-sm text-ink-500 mt-2">per hour of delayed treatment. Every shift saved is lives recovered.</div>
+          <div class="mt-3 text-[11px] uppercase tracking-wider text-hse-700 font-semibold">→ Sepsis ICU · Deterioration (NEWS2)</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="mt-12 rounded-2xl border border-ink-100 bg-gradient-to-br from-white to-ink-50 p-7">
+      <div class="text-xs uppercase tracking-widest text-hse-700 font-semibold">Why the situation persists</div>
+      <p class="mt-3 text-ink-700 leading-relaxed max-w-4xl">
+        Existing AI deployments in Ireland are point-products: <strong>Aidoc</strong> for radiology
+        at the Mater, <strong>eAltra</strong> for pre-chemo at St James's, <strong>Oneview</strong> for
+        patient engagement at CHI. There is currently <em>no integrated AI platform</em> covering ED
+        triage, deterioration, bed management, oncology risk and waiting-list intelligence in a single
+        system. That gap is the one this platform fills.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- STRATEGY ALIGNMENT -->
+<section id="strategy" class="bg-white border-t border-ink-100">
+  <div class="max-w-6xl mx-auto px-6 py-16 md:py-20">
+    <div class="text-xs uppercase tracking-widest text-hse-700 font-semibold">02 · Strategic alignment</div>
+    <h2 class="text-3xl md:text-4xl font-bold mt-2 leading-tight max-w-3xl">
+      Mapped to the HSE strategies that are <span class="text-hse-700">already funded</span>.
+    </h2>
+    <p class="mt-4 text-ink-500 max-w-3xl">
+      This is not a speculative concept pitch. It is a working platform deliberately engineered against
+      Ireland's three governing health-tech strategies and the National Cancer Strategy 2017-2026.
+    </p>
+
+    <div class="mt-10 grid md:grid-cols-3 gap-4">
+      <div class="rounded-xl border border-ink-100 p-6 bg-ink-50/50">
+        <div class="text-[11px] uppercase tracking-widest text-hse-700 font-semibold">Sláintecare</div>
+        <div class="font-bold mt-1">10-year reform programme</div>
+        <ul class="mt-3 space-y-1.5 text-sm text-ink-700">
+          <li class="flex gap-2"><span class="text-hse-500">▸</span> Demand & capacity management</li>
+          <li class="flex gap-2"><span class="text-hse-500">▸</span> Reduction of waiting times</li>
+          <li class="flex gap-2"><span class="text-hse-500">▸</span> Care closer to home (virtual ward roadmap)</li>
+          <li class="flex gap-2"><span class="text-hse-500">▸</span> Integrated electronic records (FHIR)</li>
+        </ul>
+      </div>
+      <div class="rounded-xl border border-ink-100 p-6 bg-ink-50/50">
+        <div class="text-[11px] uppercase tracking-widest text-hse-700 font-semibold">Digital for Care 2024-2030</div>
+        <div class="font-bold mt-1">Foundational digital strategy</div>
+        <ul class="mt-3 space-y-1.5 text-sm text-ink-700">
+          <li class="flex gap-2"><span class="text-hse-500">▸</span> HL7 FHIR R4 interoperability — service <span class="num-mono">app_19</span></li>
+          <li class="flex gap-2"><span class="text-hse-500">▸</span> Data governance &amp; DSAR — <span class="num-mono">app_17</span></li>
+          <li class="flex gap-2"><span class="text-hse-500">▸</span> Explainable AI for human oversight — <span class="num-mono">app_18</span></li>
+        </ul>
+      </div>
+      <div class="rounded-xl border-2 border-hse-500 p-6 bg-hse-50">
+        <div class="text-[11px] uppercase tracking-widest text-hse-700 font-semibold">AI for Care 2026-2030</div>
+        <div class="font-bold mt-1">First national AI strategy</div>
+        <ul class="mt-3 space-y-1.5 text-sm text-ink-700">
+          <li class="flex gap-2"><span class="text-hse-500">▸</span> AI scribe — <strong>built</strong> (app_10)</li>
+          <li class="flex gap-2"><span class="text-hse-500">▸</span> Demand &amp; Capacity — <strong>built</strong> (app_03/08/14/16/21)</li>
+          <li class="flex gap-2"><span class="text-hse-500">▸</span> Support function automation — <strong>built</strong> (app_15)</li>
+          <li class="flex gap-2"><span class="text-ink-400">▸</span> Radiology AI — <em>complementary to Aidoc</em></li>
+          <li class="flex gap-2"><span class="text-ink-400">▸</span> Contact centre — out of scope v1</li>
+        </ul>
+        <div class="mt-4 text-xs text-hse-700 font-semibold">→ 4 of 5 Year-1 priorities already addressed.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PLATFORM -->
+<section id="platform" class="bg-ink-900 text-white">
+  <div class="max-w-6xl mx-auto px-6 py-16 md:py-20">
+    <div class="text-xs uppercase tracking-widest text-hse-100 font-semibold">03 · The platform</div>
+    <h2 class="text-3xl md:text-4xl font-bold mt-2 leading-tight max-w-3xl">
+      19 interoperable services. One unified clinical dashboard.
+    </h2>
+    <p class="mt-4 text-ink-300 max-w-3xl">
+      FastAPI microservices, MongoDB durable event-log, Kafka (Redpanda) streaming, React/TypeScript
+      dashboard. Every prediction carries a SHAP rationale; every clinical action publishes a
+      Kafka domain event auditable from <span class="num-mono">app_17</span> (GDPR).
+    </p>
+
+    <div class="mt-10 grid md:grid-cols-2 lg:grid-cols-3 gap-3">
+      <!-- 19 services -->
+      <div class="rounded-lg bg-white/5 border border-white/10 p-4 hover:border-hse-500 transition-colors">
+        <div class="flex items-center justify-between"><span class="text-xs num-mono text-hse-100">app_01</span><span class="text-[10px] uppercase text-ink-400">port 8201</span></div>
+        <div class="font-semibold mt-1">ED Triage</div>
+        <div class="text-xs text-ink-300 mt-1">XGBoost · 5-class acuity · disposition · LOS</div>
+      </div>
+      <div class="rounded-lg bg-white/5 border border-white/10 p-4 hover:border-hse-500 transition-colors">
+        <div class="flex items-center justify-between"><span class="text-xs num-mono text-hse-100">app_02</span><span class="text-[10px] uppercase text-ink-400">port 8202</span></div>
+        <div class="font-semibold mt-1">Sepsis ICU</div>
+        <div class="text-xs text-ink-300 mt-1">LSTM AUROC 0.998 · 4h horizon · SOFA</div>
+      </div>
+      <div class="rounded-lg bg-white/5 border border-white/10 p-4 hover:border-hse-500 transition-colors">
+        <div class="flex items-center justify-between"><span class="text-xs num-mono text-hse-100">app_03</span><span class="text-[10px] uppercase text-ink-400">port 8203</span></div>
+        <div class="font-semibold mt-1">Hospital Ops</div>
+        <div class="text-xs text-ink-300 mt-1">DES + MARL · 8-department staffing</div>
+      </div>
+      <div class="rounded-lg bg-white/5 border border-white/10 p-4 hover:border-hse-500 transition-colors">
+        <div class="flex items-center justify-between"><span class="text-xs num-mono text-hse-100">app_04</span><span class="text-[10px] uppercase text-ink-400">port 8204</span></div>
+        <div class="font-semibold mt-1">Oncology AI</div>
+        <div class="text-xs text-ink-300 mt-1">XGBoost AUROC 0.897 · readmission + mortality</div>
+      </div>
+      <div class="rounded-lg bg-white/5 border border-white/10 p-4 hover:border-hse-500 transition-colors">
+        <div class="flex items-center justify-between"><span class="text-xs num-mono text-hse-100">app_05</span><span class="text-[10px] uppercase text-ink-400">port 8205</span></div>
+        <div class="font-semibold mt-1">Patient Journey</div>
+        <div class="text-xs text-ink-300 mt-1">Timeline · vitals · labs · meds · cohort</div>
+      </div>
+      <div class="rounded-lg bg-white/5 border border-white/10 p-4 hover:border-hse-500 transition-colors">
+        <div class="flex items-center justify-between"><span class="text-xs num-mono text-hse-100">app_06</span><span class="text-[10px] uppercase text-ink-400">port 8206</span></div>
+        <div class="font-semibold mt-1">Clinical Chat</div>
+        <div class="text-xs text-ink-300 mt-1">LLM (Ollama) · multi-module RAG</div>
+      </div>
+      <div class="rounded-lg bg-white/5 border border-white/10 p-4 hover:border-hse-500 transition-colors">
+        <div class="flex items-center justify-between"><span class="text-xs num-mono text-hse-100">app_07</span><span class="text-[10px] uppercase text-ink-400">port 8207</span></div>
+        <div class="font-semibold mt-1">Data Ingestion / Twin</div>
+        <div class="text-xs text-ink-300 mt-1">Digital twin · synthetic patient streams</div>
+      </div>
+      <div class="rounded-lg bg-white/5 border border-white/10 p-4 hover:border-hse-500 transition-colors">
+        <div class="flex items-center justify-between"><span class="text-xs num-mono text-hse-100">app_08</span><span class="text-[10px] uppercase text-ink-400">port 8208</span></div>
+        <div class="font-semibold mt-1">Bed Management</div>
+        <div class="text-xs text-ink-300 mt-1">Real-time bed board · predictive discharge</div>
+      </div>
+      <div class="rounded-lg bg-white/5 border border-white/10 p-4 hover:border-hse-500 transition-colors">
+        <div class="flex items-center justify-between"><span class="text-xs num-mono text-hse-100">app_09</span><span class="text-[10px] uppercase text-ink-400">port 8209</span></div>
+        <div class="font-semibold mt-1">Waiting List</div>
+        <div class="text-xs text-ink-300 mt-1">ML prioritisation · 750k patient context</div>
+      </div>
+      <div class="rounded-lg bg-white/5 border border-white/10 p-4 hover:border-hse-500 transition-colors">
+        <div class="flex items-center justify-between"><span class="text-xs num-mono text-hse-100">app_10</span><span class="text-[10px] uppercase text-ink-400">port 8210</span></div>
+        <div class="font-semibold mt-1">Clinical Scribe</div>
+        <div class="text-xs text-ink-300 mt-1">SOAP generation · ICD-10 coding</div>
+      </div>
+      <div class="rounded-lg bg-white/5 border border-white/10 p-4 hover:border-hse-500 transition-colors">
+        <div class="flex items-center justify-between"><span class="text-xs num-mono text-hse-100">app_14</span><span class="text-[10px] uppercase text-ink-400">port 8214</span></div>
+        <div class="font-semibold mt-1">ED Flow Optimizer</div>
+        <div class="text-xs text-ink-300 mt-1">PET breach prediction · queue simulation</div>
+      </div>
+      <div class="rounded-lg bg-white/5 border border-white/10 p-4 hover:border-hse-500 transition-colors">
+        <div class="flex items-center justify-between"><span class="text-xs num-mono text-hse-100">app_15</span><span class="text-[10px] uppercase text-ink-400">port 8215</span></div>
+        <div class="font-semibold mt-1">Hospital ERP</div>
+        <div class="text-xs text-ink-300 mt-1">Finance · rostering · procurement signals</div>
+      </div>
+      <div class="rounded-lg bg-white/5 border border-white/10 p-4 hover:border-hse-500 transition-colors">
+        <div class="flex items-center justify-between"><span class="text-xs num-mono text-hse-100">app_16</span><span class="text-[10px] uppercase text-ink-400">port 8216</span></div>
+        <div class="font-semibold mt-1">Trolley Watch</div>
+        <div class="text-xs text-ink-300 mt-1">INMO-style counter · breach alerts</div>
+      </div>
+      <div class="rounded-lg bg-white/5 border border-white/10 p-4 hover:border-hse-500 transition-colors">
+        <div class="flex items-center justify-between"><span class="text-xs num-mono text-hse-100">app_17</span><span class="text-[10px] uppercase text-ink-400">port 8217</span></div>
+        <div class="font-semibold mt-1">GDPR Compliance</div>
+        <div class="text-xs text-ink-300 mt-1">Audit trail · DSAR · DPIA artefacts</div>
+      </div>
+      <div class="rounded-lg bg-white/5 border border-white/10 p-4 hover:border-hse-500 transition-colors">
+        <div class="flex items-center justify-between"><span class="text-xs num-mono text-hse-100">app_18</span><span class="text-[10px] uppercase text-ink-400">port 8218</span></div>
+        <div class="font-semibold mt-1">XAI</div>
+        <div class="text-xs text-ink-300 mt-1">SHAP per prediction · decision log</div>
+      </div>
+      <div class="rounded-lg bg-white/5 border border-white/10 p-4 hover:border-hse-500 transition-colors">
+        <div class="flex items-center justify-between"><span class="text-xs num-mono text-hse-100">app_19</span><span class="text-[10px] uppercase text-ink-400">port 8219</span></div>
+        <div class="font-semibold mt-1">FHIR Gateway</div>
+        <div class="text-xs text-ink-300 mt-1">HL7 FHIR R4 · NSCR-ready · EHR-agnostic</div>
+      </div>
+      <div class="rounded-lg bg-white/5 border border-white/10 p-4 hover:border-hse-500 transition-colors">
+        <div class="flex items-center justify-between"><span class="text-xs num-mono text-hse-100">app_20</span><span class="text-[10px] uppercase text-ink-400">port 8220</span></div>
+        <div class="font-semibold mt-1">Deterioration</div>
+        <div class="text-xs text-ink-300 mt-1">NEWS2 · PEWS · IMEWS · escalations</div>
+      </div>
+      <div class="rounded-lg bg-white/5 border border-white/10 p-4 hover:border-hse-500 transition-colors">
+        <div class="flex items-center justify-between"><span class="text-xs num-mono text-hse-100">app_21</span><span class="text-[10px] uppercase text-ink-400">port 8221</span></div>
+        <div class="font-semibold mt-1">Discharge Lounge</div>
+        <div class="text-xs text-ink-300 mt-1">Predicted discharge · bed handoff orchestration</div>
+      </div>
+      <div class="rounded-lg bg-white/5 border border-white/10 p-4 hover:border-hse-500 transition-colors">
+        <div class="flex items-center justify-between"><span class="text-xs num-mono text-hse-100">app_22</span><span class="text-[10px] uppercase text-ink-400">port 8222</span></div>
+        <div class="font-semibold mt-1">Alerts</div>
+        <div class="text-xs text-ink-300 mt-1">Coalesced · WebSocket · ack &amp; route hints</div>
+      </div>
+    </div>
+
+    <div class="mt-10 grid md:grid-cols-3 gap-4 text-sm">
+      <div class="rounded-lg bg-white/5 border border-white/10 p-4">
+        <div class="text-[11px] uppercase tracking-wider text-hse-100">Architecture</div>
+        <div class="mt-1 text-ink-200">FastAPI · MongoDB · Kafka (Redpanda) · React 19 · Tailwind 4 · Linkerd mesh ready · Helm charts</div>
+      </div>
+      <div class="rounded-lg bg-white/5 border border-white/10 p-4">
+        <div class="text-[11px] uppercase tracking-wider text-hse-100">ML stack</div>
+        <div class="mt-1 text-ink-200">XGBoost · LSTM (PyTorch) · DES + MADDPG MARL · Transformers · LLM (Ollama / Claude API ready)</div>
+      </div>
+      <div class="rounded-lg bg-white/5 border border-white/10 p-4">
+        <div class="text-[11px] uppercase tracking-wider text-hse-100">Observability</div>
+        <div class="mt-1 text-ink-200">Prometheus · Grafana · Loki · Jaeger · OpenTelemetry across every service</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- IMPACT -->
+<section id="impact" class="bg-white border-t border-ink-100">
+  <div class="max-w-6xl mx-auto px-6 py-16 md:py-20">
+    <div class="text-xs uppercase tracking-widest text-hse-700 font-semibold">04 · Quantified impact</div>
+    <h2 class="text-3xl md:text-4xl font-bold mt-2 leading-tight max-w-3xl">
+      What this looks like at one Model 4 hospital, per year.
+    </h2>
+    <p class="mt-4 text-ink-500 max-w-3xl">
+      Modelled on a representative ~600-bed acute hospital, ~75,000 ED attendances per year.
+      Mid-case, conservative. Sources: HSE BIU, peer-reviewed clinical AI literature applied to Irish census.
+    </p>
+
+    <div class="mt-10 grid sm:grid-cols-2 lg:grid-cols-4 gap-3">
+      <div class="rounded-xl bg-gradient-to-br from-hse-50 to-white border border-hse-100 p-5">
+        <div class="text-3xl font-bold num-mono text-hse-700">€25-35M</div>
+        <div class="text-xs uppercase tracking-wider text-hse-700 font-semibold mt-1">Annual benefit envelope</div>
+        <div class="text-xs text-ink-500 mt-2">Direct savings + deferred capex + consultant-time recovery</div>
+      </div>
+      <div class="rounded-xl bg-white border border-ink-100 p-5">
+        <div class="text-3xl font-bold num-mono text-ink-900">20,000</div>
+        <div class="text-xs uppercase tracking-wider text-ink-700 font-semibold mt-1">Bed-days released</div>
+        <div class="text-xs text-ink-500 mt-2">From ~1.0h shorter mean LOS × 20k discharges</div>
+      </div>
+      <div class="rounded-xl bg-white border border-ink-100 p-5">
+        <div class="text-3xl font-bold num-mono text-ink-900">12-25</div>
+        <div class="text-xs uppercase tracking-wider text-ink-700 font-semibold mt-1">Sepsis lives saved (per ICU)</div>
+        <div class="text-xs text-ink-500 mt-2">4-hour-horizon detection at &gt;90% sensitivity</div>
+      </div>
+      <div class="rounded-xl bg-white border border-ink-100 p-5">
+        <div class="text-3xl font-bold num-mono text-ink-900">120-160</div>
+        <div class="text-xs uppercase tracking-wider text-ink-700 font-semibold mt-1">Avoided oncology readmissions</div>
+        <div class="text-xs text-ink-500 mt-2">15-20% reduction × ~800 baseline readmissions</div>
+      </div>
+    </div>
+
+    <div class="mt-10 grid lg:grid-cols-3 gap-4">
+      <div class="rounded-xl border border-ink-100 p-6">
+        <div class="text-[11px] uppercase tracking-widest text-hse-700 font-semibold">National extrapolation</div>
+        <div class="text-2xl font-bold num-mono mt-1 text-ink-900">€250-400M</div>
+        <div class="text-sm text-ink-500 mt-1">Bed-days released across HSE acute estate (notional throughput value).</div>
+      </div>
+      <div class="rounded-xl border border-ink-100 p-6">
+        <div class="text-[11px] uppercase tracking-widest text-hse-700 font-semibold">Documentation-time</div>
+        <div class="text-2xl font-bold num-mono mt-1 text-ink-900">5-8%</div>
+        <div class="text-sm text-ink-500 mt-1">Of total consultant capacity returned to patient-facing time. AI for Care Y1 target met.</div>
+      </div>
+      <div class="rounded-xl border border-ink-100 p-6">
+        <div class="text-[11px] uppercase tracking-widest text-hse-700 font-semibold">Sepsis lives, nationally</div>
+        <div class="text-2xl font-bold num-mono mt-1 text-ink-900">250-400</div>
+        <div class="text-sm text-ink-500 mt-1">Lives per year, modelled across HSE adult ICU census.</div>
+      </div>
+    </div>
+
+    <!-- ROI table -->
+    <div class="mt-12">
+      <div class="text-xs uppercase tracking-widest text-hse-700 font-semibold">Three-year business case · single Model 4 hospital</div>
+      <div class="mt-3 overflow-x-auto rounded-xl border border-ink-100">
+        <table class="w-full text-sm">
+          <thead class="bg-ink-50 text-ink-500 text-[11px] uppercase tracking-wider">
+            <tr>
+              <th class="text-left p-3">Line item</th>
+              <th class="text-right p-3">Year 1</th>
+              <th class="text-right p-3">Year 2</th>
+              <th class="text-right p-3">Year 3</th>
+            </tr>
+          </thead>
+          <tbody class="text-ink-700">
+            <tr class="border-t border-ink-100">
+              <td class="p-3">Platform licence + integration</td>
+              <td class="p-3 text-right num-mono">€1.8M</td>
+              <td class="p-3 text-right num-mono">€1.2M</td>
+              <td class="p-3 text-right num-mono">€1.2M</td>
+            </tr>
+            <tr class="border-t border-ink-100">
+              <td class="p-3">HSE-side implementation effort</td>
+              <td class="p-3 text-right num-mono">€0.6M</td>
+              <td class="p-3 text-right num-mono">€0.3M</td>
+              <td class="p-3 text-right num-mono">€0.2M</td>
+            </tr>
+            <tr class="border-t border-ink-100 bg-ink-50/50 font-semibold">
+              <td class="p-3">Total cost</td>
+              <td class="p-3 text-right num-mono">€2.4M</td>
+              <td class="p-3 text-right num-mono">€1.5M</td>
+              <td class="p-3 text-right num-mono">€1.4M</td>
+            </tr>
+            <tr class="border-t border-ink-100">
+              <td class="p-3">Bed-days released (mid-case)</td>
+              <td class="p-3 text-right num-mono">€8M</td>
+              <td class="p-3 text-right num-mono">€18M</td>
+              <td class="p-3 text-right num-mono">€22M</td>
+            </tr>
+            <tr class="border-t border-ink-100">
+              <td class="p-3">Avoided oncology readmissions</td>
+              <td class="p-3 text-right num-mono">€0.4M</td>
+              <td class="p-3 text-right num-mono">€0.8M</td>
+              <td class="p-3 text-right num-mono">€1.0M</td>
+            </tr>
+            <tr class="border-t border-ink-100">
+              <td class="p-3">Documentation-time recovery</td>
+              <td class="p-3 text-right num-mono">€0.8M</td>
+              <td class="p-3 text-right num-mono">€1.6M</td>
+              <td class="p-3 text-right num-mono">€2.0M</td>
+            </tr>
+            <tr class="border-t border-ink-100 bg-hse-50 font-semibold">
+              <td class="p-3 text-hse-700">Net benefit</td>
+              <td class="p-3 text-right num-mono text-hse-700">€6.8M</td>
+              <td class="p-3 text-right num-mono text-hse-700">€18.9M</td>
+              <td class="p-3 text-right num-mono text-hse-700">€23.6M</td>
+            </tr>
+            <tr class="border-t border-ink-100 bg-hse-50">
+              <td class="p-3 text-hse-700 font-semibold">Payback</td>
+              <td class="p-3 text-right num-mono text-hse-700 font-semibold">&lt; 4 months</td>
+              <td class="p-3"></td>
+              <td class="p-3"></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="mt-3 text-xs text-ink-400 max-w-3xl">
+        Bed-day value is notional throughput, not cash. Cash equivalent depends on whether released
+        capacity admits more elective patients (revenue) or closes winter-pressure escalation beds
+        (avoidance). Both interpretations are valid HSE business-case framings.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- PILOT -->
+<section id="pilot" class="bg-ink-50 border-t border-ink-100">
+  <div class="max-w-6xl mx-auto px-6 py-16 md:py-20">
+    <div class="text-xs uppercase tracking-widest text-hse-700 font-semibold">05 · Proposed pilot</div>
+    <h2 class="text-3xl md:text-4xl font-bold mt-2 leading-tight max-w-3xl">
+      One site. One front-door bundle. 12 months. HIHI-framed.
+    </h2>
+    <p class="mt-4 text-ink-500 max-w-3xl">
+      The lowest-risk path to a credible HSE-wide reference is a single Model 4 site running the
+      front-door bundle (ED Triage + ED Flow + Trolley Watch + Bed Management) under the Health
+      Innovation Hub Ireland framework, with HSE Demand &amp; Capacity Visualisation as the
+      downstream procurement target.
+    </p>
+
+    <!-- Pilot site recommendations -->
+    <div class="mt-10 grid md:grid-cols-2 lg:grid-cols-4 gap-4">
+      <div class="rounded-xl bg-white border border-ink-100 p-5 hover:border-hse-500 transition-colors">
+        <div class="text-[11px] uppercase tracking-wider text-hse-700 font-semibold">Lead candidate</div>
+        <div class="font-bold mt-1">Mater Misericordiae</div>
+        <p class="text-sm text-ink-500 mt-2">Already runs Aidoc; AI-friendly executive; large urban ED.</p>
+        <div class="mt-3 text-xs text-hse-700 font-semibold">Bundle: ED Triage + ED Flow + Trolley Watch</div>
+      </div>
+      <div class="rounded-xl bg-white border border-ink-100 p-5 hover:border-hse-500 transition-colors">
+        <div class="text-[11px] uppercase tracking-wider text-ink-500 font-semibold">Phase 2</div>
+        <div class="font-bold mt-1">St James's Hospital</div>
+        <p class="text-sm text-ink-500 mt-2">Largest hospital · NCCP centre · runs eAltra pilot.</p>
+        <div class="mt-3 text-xs text-hse-700 font-semibold">Bundle: Oncology + Discharge + Bed Mgmt</div>
+      </div>
+      <div class="rounded-xl bg-white border border-ink-100 p-5 hover:border-hse-500 transition-colors">
+        <div class="text-[11px] uppercase tracking-wider text-ink-500 font-semibold">Phase 3</div>
+        <div class="font-bold mt-1">UH Galway</div>
+        <p class="text-sm text-ink-500 mt-2">"Ruadhan" RPA bot already live; HSE West innovation appetite.</p>
+        <div class="mt-3 text-xs text-hse-700 font-semibold">Bundle: Hospital Ops + Sepsis + Deterioration</div>
+      </div>
+      <div class="rounded-xl bg-white border border-ink-100 p-5 hover:border-hse-500 transition-colors">
+        <div class="text-[11px] uppercase tracking-wider text-ink-500 font-semibold">Phase 4</div>
+        <div class="font-bold mt-1">Beaumont Hospital</div>
+        <p class="text-sm text-ink-500 mt-2">Neuroscience centre · persistent ED pressure.</p>
+        <div class="mt-3 text-xs text-hse-700 font-semibold">Bundle: ED Triage + Deterioration + FHIR</div>
+      </div>
+    </div>
+
+    <!-- Roadmap -->
+    <div class="mt-12">
+      <div class="text-xs uppercase tracking-widest text-hse-700 font-semibold">12-month roadmap</div>
+      <div class="mt-4 grid md:grid-cols-4 gap-3">
+        <div class="rounded-lg bg-white border-l-4 border-hse-500 p-4">
+          <div class="text-[11px] uppercase tracking-wider text-hse-700 font-bold">Q1</div>
+          <div class="text-sm font-semibold mt-1">Localisation + dossier</div>
+          <p class="text-xs text-ink-500 mt-2">Manchester Triage System mapping; Irish ESI→MTS retrain; ICD-10-AM alignment; EU AI Act technical files.</p>
+        </div>
+        <div class="rounded-lg bg-white border-l-4 border-hse-500 p-4">
+          <div class="text-[11px] uppercase tracking-wider text-hse-700 font-bold">Q2</div>
+          <div class="text-sm font-semibold mt-1">Mater pilot live</div>
+          <p class="text-xs text-ink-500 mt-2">Front-door bundle in production; FHIR Gateway resource mapping completed; Irish validation cohort begins.</p>
+        </div>
+        <div class="rounded-lg bg-white border-l-4 border-hse-500 p-4">
+          <div class="text-[11px] uppercase tracking-wider text-hse-700 font-bold">Q3</div>
+          <div class="text-sm font-semibold mt-1">St James's + HIHI submission</div>
+          <p class="text-xs text-ink-500 mt-2">Oncology + Discharge + Bed Mgmt live; HIHI.AI 2026 national call submission with 2 reference sites.</p>
+        </div>
+        <div class="rounded-lg bg-white border-l-4 border-hse-500 p-4">
+          <div class="text-[11px] uppercase tracking-wider text-hse-700 font-bold">Q4</div>
+          <div class="text-sm font-semibold mt-1">UH Galway + national posture</div>
+          <p class="text-xs text-ink-500 mt-2">ICU bundle live; three-site reference deck; HSE Demand &amp; Capacity Platform engagement opens.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Procurement paths -->
+    <div class="mt-12 rounded-2xl border border-ink-100 bg-white p-6">
+      <div class="text-xs uppercase tracking-widest text-hse-700 font-semibold">Procurement &amp; funding pathways available today</div>
+      <div class="mt-4 grid sm:grid-cols-2 lg:grid-cols-3 gap-3 text-sm">
+        <div class="rounded-lg bg-ink-50/60 p-3">→ Health Innovation Hub Ireland (HIHI) clinical pilots — Q3-Q4 2026 call</div>
+        <div class="rounded-lg bg-ink-50/60 p-3">→ HSE Demand &amp; Capacity Visualisation Platform — 2026-2027 procurement</div>
+        <div class="rounded-lg bg-ink-50/60 p-3">→ HSE AI &amp; Automation Centre of Excellence — continuous</div>
+        <div class="rounded-lg bg-ink-50/60 p-3">→ Virtual Care Programme — €2.7M allocated 2026 (Phase 2 module)</div>
+        <div class="rounded-lg bg-ink-50/60 p-3">→ Hospital Medicines Management — 12-site go-live 2026 (Phase 2)</div>
+        <div class="rounded-lg bg-ink-50/60 p-3">→ Enterprise Ireland Innovation Vouchers / HPSU</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT (personal) -->
+<section id="about" class="bg-white border-t border-ink-100">
+  <div class="max-w-6xl mx-auto px-6 py-16 md:py-20">
+    <div class="grid lg:grid-cols-3 gap-10">
+      <div class="lg:col-span-1">
+        <div class="text-xs uppercase tracking-widest text-hse-700 font-semibold">06 · Why me</div>
+        <h2 class="text-3xl md:text-4xl font-bold mt-2 leading-tight">
+          Built solo. By a recent MSc AI graduate <span class="text-hse-700">in Ireland</span>.
+        </h2>
+      </div>
+      <div class="lg:col-span-2 space-y-5 text-ink-700 leading-relaxed">
+        <p>
+          I am <strong>Harishankar Somasundaram</strong>, an MSc in Artificial Intelligence
+          graduate from an Irish university. I built this platform end-to-end as the technical
+          embodiment of a thesis proposition: that Ireland's acute hospital crisis is not solvable
+          by another point-product, and what is missing is a single integrated AI substrate
+          covering the front door, the ward, the ICU, the cancer pathway and the back door.
+        </p>
+        <p>
+          The 19 services on this site are not slideware. They run today: 18 FastAPI backends
+          + a unified React dashboard, with a Kafka event spine, MongoDB durable event log,
+          Prometheus / Loki / Jaeger observability, Helm charts for k8s, and Linkerd-ready
+          service mesh. Models trained on MIMIC-IV; deliberately structured for Irish-data
+          recalibration during pilot.
+        </p>
+        <p>
+          I am proposing a collaboration — not a sale. The platform is openly engineered, the
+          regulatory dossier is in active drafting, and the most efficient route into HSE service
+          is a HIHI-framed pilot at one Model 4 site, with HSE retaining the option to scale via
+          its existing procurement frameworks. I would be glad to demo the platform to you,
+          to your CCIO, or to the AI &amp; Automation CoE at your earliest convenience.
+        </p>
+      </div>
+    </div>
+
+    <div class="mt-10 grid md:grid-cols-3 gap-3 text-sm">
+      <div class="rounded-lg border border-ink-100 p-4">
+        <div class="text-[11px] uppercase tracking-wider text-hse-700 font-semibold">Education</div>
+        <div class="mt-1 text-ink-700">MSc Artificial Intelligence (Ireland)</div>
+      </div>
+      <div class="rounded-lg border border-ink-100 p-4">
+        <div class="text-[11px] uppercase tracking-wider text-hse-700 font-semibold">Stack proven</div>
+        <div class="mt-1 text-ink-700">FastAPI · PyTorch · XGBoost · MARL · React · Kafka · MongoDB · Helm</div>
+      </div>
+      <div class="rounded-lg border border-ink-100 p-4">
+        <div class="text-[11px] uppercase tracking-wider text-hse-700 font-semibold">Available for</div>
+        <div class="mt-1 text-ink-700">HIHI pilot · Research collab · HSE evaluation · Demo</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT / CTA -->
+<section id="contact" class="bg-gradient-to-br from-hse-700 to-hse-900 text-white">
+  <div class="max-w-6xl mx-auto px-6 py-16 md:py-20">
+    <div class="text-xs uppercase tracking-widest text-hse-100 font-semibold">07 · The ask</div>
+    <h2 class="text-3xl md:text-5xl font-bold mt-2 leading-tight max-w-3xl">
+      A 30-minute demo. One pilot site. Zero up-front cost under HIHI.
+    </h2>
+    <p class="mt-5 text-lg text-hse-100 max-w-3xl">
+      I'd like to walk you and the CCIO through the platform, and put a HIHI submission in front of
+      the next national call. The technical work is done. The regulatory work is in flight.
+      The remaining variable is HSE's choice of pilot site.
+    </p>
+
+    <div class="mt-10 grid md:grid-cols-3 gap-4">
+      <a href="mailto:somasundaram.harishankar@gmail.com?subject=HSE%20Pulse%20pitch%20follow-up" class="rounded-xl bg-white text-hse-900 hover:bg-ink-50 p-5 transition-colors">
+        <div class="text-[11px] uppercase tracking-wider text-hse-700 font-bold">Email</div>
+        <div class="font-semibold mt-1 break-all">somasundaram.harishankar@gmail.com</div>
+        <div class="text-xs text-ink-500 mt-1">Best for scheduling and document exchange</div>
+      </a>
+      <a href="deck.html" class="rounded-xl bg-white/10 border border-white/20 hover:bg-white/15 p-5 transition-colors">
+        <div class="text-[11px] uppercase tracking-wider text-hse-100 font-bold">Pitch deck</div>
+        <div class="font-semibold mt-1">Open the slide deck →</div>
+        <div class="text-xs text-hse-100/80 mt-1">14-slide deck for in-person presentation</div>
+      </a>
+      <a href="#platform" class="rounded-xl bg-white/10 border border-white/20 hover:bg-white/15 p-5 transition-colors">
+        <div class="text-[11px] uppercase tracking-wider text-hse-100 font-bold">Live demo</div>
+        <div class="font-semibold mt-1">Walk-through on request</div>
+        <div class="text-xs text-hse-100/80 mt-1">Full dashboard available on a 24h notice</div>
+      </a>
+    </div>
+
+    <div class="mt-12 pt-8 border-t border-white/10 grid md:grid-cols-3 gap-4 text-xs text-hse-100/80">
+      <div>
+        <div class="text-white font-semibold mb-1">Document set</div>
+        Business Requirements Document v1.1 · Architectural Roadmap · Irish Hospital AI Strategy Report · System Design · Technical Documentation
+      </div>
+      <div>
+        <div class="text-white font-semibold mb-1">Source positioning</div>
+        Independent submission. Open to collaboration with HSE, HIHI, HIQA, and academic partners. Not affiliated with any incumbent vendor.
+      </div>
+      <div>
+        <div class="text-white font-semibold mb-1">Compliance posture</div>
+        EU AI Act high-risk dossier in draft · GDPR DPIAs in flight · MDR Class IIa pathway identified · HIQA AI principles mapped
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="bg-ink-900 text-ink-400 text-xs">
+  <div class="max-w-6xl mx-auto px-6 py-6 flex flex-col md:flex-row items-center justify-between gap-3">
+    <div>© 2026 Harishankar Somasundaram · Submitted to HSE Ireland · Confidential</div>
+    <div class="flex items-center gap-4">
+      <a href="deck.html" class="hover:text-white">Deck</a>
+      <a href="#contact" class="hover:text-white">Contact</a>
+      <a href="#" onclick="window.print();return false;" class="hover:text-white">Print</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Reveal-on-scroll
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.08 });
+  document.querySelectorAll('.stat-card, h2, .ribbon').forEach(el => {
+    el.classList.add('reveal-up');
+    io.observe(el);
+  });
+</script>
+
+</body>
+</html>
