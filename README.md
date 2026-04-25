@@ -1,4 +1,4 @@
-# HSE Pulse — Pitch site
+# HSE Pulse - Pitch site
 
 Two static files. Zero build step. Deployed via GitHub Pages, fronting `hse.harishankar.info`.
 
@@ -12,7 +12,7 @@ pitch/
 ```
 
 All HTML loads its dependencies (Tailwind, Reveal.js, Inter / JetBrains Mono fonts) from
-public CDNs — no `npm install`, no bundling, nothing to compile.
+public CDNs - no `npm install`, no bundling, nothing to compile.
 
 ---
 
@@ -25,7 +25,7 @@ python -m http.server 8000        # → http://localhost:8000
 
 ---
 
-## Deploy — three commands + one DNS record
+## Deploy - three commands + one DNS record
 
 ### 1. Create an empty public repo on GitHub
 
