@@ -7,9 +7,16 @@
   <meta name="description" content="An integrated AI platform addressing Ireland's trolley crisis, sepsis mortality, oncology readmission, and waiting list — built by an MSc AI graduate in Ireland for HSE collaboration." />
   <meta name="theme-color" content="#005a30" />
   <meta property="og:title" content="HSE Pulse — Integrated AI for the Irish acute hospital" />
-  <meta property="og:description" content="Pitch to HSE: 19-service AI platform addressing trolleys, sepsis, oncology, waiting lists, deterioration. Aligned to AI for Care 2026-2030." />
+  <meta property="og:description" content="Pilot proposal to HSE: 19-service AI platform built solo by an MSc AI graduate in Ireland. 12-week zero-cost HIHI pilot at Mater. Aligned to AI for Care 2026-2030." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://hse.harishankar.info/" />
+  <meta property="og:image" content="https://hse.harishankar.info/og.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="HSE Pulse — Pilot proposal to HSE Ireland" />
+  <meta name="twitter:description" content="19-service integrated AI platform · 12-week zero-cost pilot · aligned to AI for Care 2026-2030." />
+  <meta name="twitter:image" content="https://hse.harishankar.info/og.png" />
   <link rel="canonical" href="https://hse.harishankar.info/" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -52,6 +59,18 @@
       content: ""; position: absolute; left: -1px; top: 0; bottom: 0; width: 4px;
       background: linear-gradient(180deg, #009639 0%, #007d2e 100%); border-radius: 2px;
     }
+    .modelled-pill {
+      display: inline-block; padding: 2px 8px; border-radius: 999px;
+      font-size: 9px; font-weight: 700; letter-spacing: 0.08em;
+      text-transform: uppercase;
+      background: rgba(245,158,11,0.12); color: #b45309; border: 1px solid rgba(245,158,11,0.35);
+    }
+    .published-pill {
+      display: inline-block; padding: 2px 8px; border-radius: 999px;
+      font-size: 9px; font-weight: 700; letter-spacing: 0.08em;
+      text-transform: uppercase;
+      background: rgba(0,150,57,0.10); color: #005a30; border: 1px solid rgba(0,150,57,0.30);
+    }
     .pulse-dot { animation: pulse 2s ease-in-out infinite; }
     @keyframes pulse { 0%,100% { opacity: 1; transform: scale(1); } 50% { opacity: .5; transform: scale(1.4); } }
     @media print {
@@ -89,7 +108,7 @@
   <div class="max-w-6xl mx-auto px-6 pt-16 pb-20 md:pt-24 md:pb-28">
     <div class="flex items-center gap-2 text-xs tracking-widest uppercase text-hse-100 mb-5">
       <span class="w-2 h-2 rounded-full bg-hse-500 pulse-dot"></span>
-      Pitch · Health Service Executive · Ireland
+      Pilot proposal · Health Service Executive · Ireland
     </div>
     <h1 class="text-4xl md:text-6xl font-extrabold leading-[1.05] tracking-tight max-w-4xl">
       One integrated AI platform for the<br/>
@@ -97,9 +116,14 @@
     </h1>
     <p class="mt-7 text-lg md:text-xl text-ink-200 max-w-3xl leading-relaxed">
       19 interoperable services covering ED triage, sepsis, deterioration, bed management,
-      oncology risk, waiting-list intelligence and discharge orchestration — built end-to-end,
-      running today, designed against the HSE <em>"AI for Care 2026-2030"</em> Year-1 priorities.
+      oncology risk, waiting-list intelligence and discharge orchestration —
+      <strong>engineered end-to-end, locally instrumented, ready for a HIHI-framed clinical pilot</strong>.
+      Aligned to the HSE <em>"AI for Care 2026-2030"</em> Year-1 priorities.
     </p>
+    <div class="mt-6 inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-hse-500/15 border border-hse-500/40 text-hse-100 text-sm">
+      <span class="w-1.5 h-1.5 rounded-full bg-hse-500"></span>
+      <strong>The ask:</strong>&nbsp;a 12-week pilot at one Model 4 site · zero cost to HSE · explicit falsification clause
+    </div>
 
     <div class="mt-10 grid grid-cols-2 md:grid-cols-4 gap-3 max-w-5xl">
       <div class="stat-card rounded-xl bg-white/5 border border-white/10 backdrop-blur p-4">
@@ -134,8 +158,9 @@
 
     <div class="mt-10 text-xs text-ink-400 max-w-2xl">
       Independent submission by <span class="text-white font-medium">Harishankar Somasundaram</span>,
-      MSc Artificial Intelligence (Ireland). Open to a HIHI-framed pilot, a research collaboration,
-      or evaluation under the HSE AI &amp; Automation Centre of Excellence.
+      MSc Artificial Intelligence (Ireland). <strong>No commercial intent today.</strong>
+      Offered for evaluation under HIHI, as a research collaboration, or via the HSE AI &amp; Automation
+      Centre of Excellence. Models trained on MIMIC-IV; Irish-data validation is an explicit Phase 1 deliverable.
     </div>
   </div>
 </section>
@@ -268,7 +293,7 @@
       <div class="rounded-lg bg-white/5 border border-white/10 p-4 hover:border-hse-500 transition-colors">
         <div class="flex items-center justify-between"><span class="text-xs num-mono text-hse-100">app_02</span><span class="text-[10px] uppercase text-ink-400">port 8202</span></div>
         <div class="font-semibold mt-1">Sepsis ICU</div>
-        <div class="text-xs text-ink-300 mt-1">LSTM AUROC 0.998 · 4h horizon · SOFA</div>
+        <div class="text-xs text-ink-300 mt-1">LSTM · 4h horizon · SOFA · external validation Q1 2026 (eICU-CRD)</div>
       </div>
       <div class="rounded-lg bg-white/5 border border-white/10 p-4 hover:border-hse-500 transition-colors">
         <div class="flex items-center justify-between"><span class="text-xs num-mono text-hse-100">app_03</span><span class="text-[10px] uppercase text-ink-400">port 8203</span></div>
@@ -278,7 +303,7 @@
       <div class="rounded-lg bg-white/5 border border-white/10 p-4 hover:border-hse-500 transition-colors">
         <div class="flex items-center justify-between"><span class="text-xs num-mono text-hse-100">app_04</span><span class="text-[10px] uppercase text-ink-400">port 8204</span></div>
         <div class="font-semibold mt-1">Oncology AI</div>
-        <div class="text-xs text-ink-300 mt-1">XGBoost AUROC 0.897 · readmission + mortality</div>
+        <div class="text-xs text-ink-300 mt-1">XGBoost · readmission + mortality · MIMIC-IV trained, NCRI validation pending</div>
       </div>
       <div class="rounded-lg bg-white/5 border border-white/10 p-4 hover:border-hse-500 transition-colors">
         <div class="flex items-center justify-between"><span class="text-xs num-mono text-hse-100">app_05</span><span class="text-[10px] uppercase text-ink-400">port 8205</span></div>
@@ -379,12 +404,20 @@
   <div class="max-w-6xl mx-auto px-6 py-16 md:py-20">
     <div class="text-xs uppercase tracking-widest text-hse-700 font-semibold">04 · Quantified impact</div>
     <h2 class="text-3xl md:text-4xl font-bold mt-2 leading-tight max-w-3xl">
-      What this looks like at one Model 4 hospital, per year.
+      What becomes possible after pilot validation.
     </h2>
     <p class="mt-4 text-ink-500 max-w-3xl">
-      Modelled on a representative ~600-bed acute hospital, ~75,000 ED attendances per year.
-      Mid-case, conservative. Sources: HSE BIU, peer-reviewed clinical AI literature applied to Irish census.
+      The figures below are <strong>modelled projections</strong> — calibrated against HSE BIU benchmarks
+      and peer-reviewed clinical AI literature applied to Irish census, but not yet validated by an
+      Irish hospital deployment. Comparable points of reference: <strong>Qventus reduced excess bed-days 20-35%</strong>
+      across US health systems; <strong>GE Command Centre cut ED wait 35%</strong> at Johns Hopkins; <strong>Bradford
+      NHS Trust deployed it in the UK</strong>. The pilot exists to produce the Irish-context number that
+      replaces these.
     </p>
+    <div class="mt-6 inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-amber-50 border border-amber-200 text-amber-900 text-sm">
+      <span class="modelled-pill">Modelled, not measured</span>
+      <span>All figures in this section are projections — what the pilot is designed to verify or falsify.</span>
+    </div>
 
     <div class="mt-10 grid sm:grid-cols-2 lg:grid-cols-4 gap-3">
       <div class="rounded-xl bg-gradient-to-br from-hse-50 to-white border border-hse-100 p-5">
@@ -429,7 +462,10 @@
 
     <!-- ROI table -->
     <div class="mt-12">
-      <div class="text-xs uppercase tracking-widest text-hse-700 font-semibold">Three-year business case · single Model 4 hospital</div>
+      <div class="flex items-center gap-3 flex-wrap">
+        <div class="text-xs uppercase tracking-widest text-hse-700 font-semibold">Three-year business case · single Model 4 hospital</div>
+        <span class="modelled-pill">Modelled · pilot must validate before HSE commits</span>
+      </div>
       <div class="mt-3 overflow-x-auto rounded-xl border border-ink-100">
         <table class="w-full text-sm">
           <thead class="bg-ink-50 text-ink-500 text-[11px] uppercase tracking-wider">
@@ -515,6 +551,22 @@
       downstream procurement target.
     </p>
 
+    <!-- Falsification clause — explicit -->
+    <div class="mt-6 rounded-2xl border-2 border-hse-500 bg-white p-6">
+      <div class="flex items-center gap-2 mb-2">
+        <span class="text-[11px] uppercase tracking-widest text-hse-700 font-bold">The falsification clause</span>
+      </div>
+      <p class="text-ink-700 leading-relaxed">
+        At pilot kickoff we agree on three success metrics with HSE clinical sponsors —
+        candidates: <strong>door-to-doctor time</strong> (front-door bundle),
+        <strong>NEWS2-score-to-escalation latency</strong> (deterioration bundle),
+        <strong>30-day oncology readmission stratification</strong> (cancer bundle).
+        At week 12, if none of the three move in the right direction by a clinically meaningful
+        margin, <strong>the pilot terminates and HSE owes nothing</strong> — no licence, no integration
+        cost, no ongoing obligation. The hypothesis is falsifiable. The downside to HSE is bounded.
+      </p>
+    </div>
+
     <!-- Pilot site recommendations -->
     <div class="mt-10 grid md:grid-cols-2 lg:grid-cols-4 gap-4">
       <div class="rounded-xl bg-white border border-ink-100 p-5 hover:border-hse-500 transition-colors">
@@ -598,24 +650,27 @@
       <div class="lg:col-span-2 space-y-5 text-ink-700 leading-relaxed">
         <p>
           I am <strong>Harishankar Somasundaram</strong>, an MSc in Artificial Intelligence
-          graduate from an Irish university. I built this platform end-to-end as the technical
-          embodiment of a thesis proposition: that Ireland's acute hospital crisis is not solvable
-          by another point-product, and what is missing is a single integrated AI substrate
-          covering the front door, the ward, the ICU, the cancer pathway and the back door.
+          graduate based in Ireland. I built this platform solo, end-to-end, over the course of
+          my MSc — not as a commercial product, but as a working artefact for a thesis proposition:
+          Ireland's acute hospital crisis isn't solvable by another point-product, and the missing
+          piece is a single integrated AI substrate covering the front door, the ward, the ICU,
+          the cancer pathway and the back door.
         </p>
         <p>
-          The 19 services on this site are not slideware. They run today: 18 FastAPI backends
-          + a unified React dashboard, with a Kafka event spine, MongoDB durable event log,
-          Prometheus / Loki / Jaeger observability, Helm charts for k8s, and Linkerd-ready
-          service mesh. Models trained on MIMIC-IV; deliberately structured for Irish-data
-          recalibration during pilot.
+          To be precise about state: 19 FastAPI services + a unified React dashboard run end-to-end
+          on a developer workstation today, with a Kafka event spine, durable Mongo event log,
+          Helm charts, and Prometheus / Loki / Jaeger observability. <strong>None are clinically
+          deployed yet.</strong> Models are MIMIC-IV-trained — external validation on eICU-CRD,
+          Irish ICD-10-AM coding alignment, and Manchester Triage System retraining are explicit
+          Phase 1 deliverables, not assumed.
         </p>
         <p>
-          I am proposing a collaboration — not a sale. The platform is openly engineered, the
-          regulatory dossier is in active drafting, and the most efficient route into HSE service
-          is a HIHI-framed pilot at one Model 4 site, with HSE retaining the option to scale via
-          its existing procurement frameworks. I would be glad to demo the platform to you,
-          to your CCIO, or to the AI &amp; Automation CoE at your earliest convenience.
+          I'm not asking HSE to buy anything. I'm asking for a 12-week pilot at one site under HIHI,
+          with a falsification clause: if the pilot doesn't produce a measurable reduction in one
+          of door-to-doctor time, NEWS2-to-escalation latency, or oncology-readmission stratification
+          accuracy, the pilot ends and HSE owes nothing. Why HSE specifically: this was built in
+          Ireland, against Irish published numbers, for an Irish problem — sending it to NHS
+          England or to a US system would be intellectually dishonest about who it was built for.
         </p>
       </div>
     </div>

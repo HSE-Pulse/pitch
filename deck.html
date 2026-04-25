@@ -53,6 +53,13 @@
     .reveal .pill.green { background: var(--hse-50); color: var(--hse-700); }
     .reveal .pill.warn { background: #fef3c7; color: #92400e; }
     .reveal .pill.crisis { background: #fee2e2; color: #991b1b; }
+    .reveal .pill.modelled { background: rgba(245,158,11,0.12); color: #b45309; border: 1px solid rgba(245,158,11,0.40); }
+    .reveal .pill.published { background: var(--hse-50); color: var(--hse-700); border: 1px solid rgba(0,150,57,0.30); }
+    .reveal .epistemic-bar {
+      margin-top: 12px; padding: 10px 14px; border-radius: 10px;
+      background: rgba(245,158,11,0.08); border: 1px solid rgba(245,158,11,0.30);
+      font-size: 0.65em; color: #92400e;
+    }
 
     /* Cover slide */
     .reveal .cover {
@@ -191,9 +198,9 @@
         <h2>19 interoperable services. One unified clinical dashboard.</h2>
         <div class="grid grid-4" style="margin-top: 22px; font-size: 0.7em;">
           <div class="card"><strong>ED Triage</strong><div class="muted">Acuity · disposition · LOS</div></div>
-          <div class="card"><strong>Sepsis ICU</strong><div class="muted">LSTM · 4h horizon</div></div>
+          <div class="card"><strong>Sepsis ICU</strong><div class="muted">LSTM · 4h · ext validation Q1</div></div>
           <div class="card"><strong>Hospital Ops</strong><div class="muted">DES + MARL</div></div>
-          <div class="card"><strong>Oncology AI</strong><div class="muted">Readmission + mortality</div></div>
+          <div class="card"><strong>Oncology AI</strong><div class="muted">Readmission + mortality · NCRI val pending</div></div>
           <div class="card"><strong>Patient Journey</strong><div class="muted">Timeline · vitals · labs</div></div>
           <div class="card"><strong>Clinical Chat</strong><div class="muted">LLM · multi-module RAG</div></div>
           <div class="card"><strong>Data / Twin</strong><div class="muted">Digital twin + sim</div></div>
@@ -255,8 +262,8 @@
     <!-- 7. IMPACT (single hospital) -->
     <section>
       <div class="stage">
-        <div class="eyebrow">Quantified impact · one Model 4 hospital</div>
-        <h2>What this looks like at <span class="hse">~600 beds, 75k ED attendances/yr</span>.</h2>
+        <div class="eyebrow">Quantified impact · one Model 4 hospital · <span class="pill modelled">Modelled</span></div>
+        <h2>What becomes possible after pilot validation.</h2>
         <div class="grid grid-4" style="margin-top: 24px;">
           <div class="card green">
             <div class="label">Annual benefit</div>
@@ -279,21 +286,21 @@
             <div class="muted">15-20% reduction</div>
           </div>
         </div>
-        <p style="margin-top: 24px; font-size: 0.75em; color: var(--ink-500); max-width: 55em;">
-          Mid-case figures, modelled on HSE BIU benchmarks and peer-reviewed clinical AI literature
-          applied to Irish census. Conservative — the bed-day value alone, by itself, justifies the
-          platform.
-        </p>
+        <div class="epistemic-bar">
+          <strong>Modelled, not measured.</strong> Calibrated against HSE BIU benchmarks and clinical AI literature.
+          Comparable: <strong>Qventus reduced excess bed-days 20-35%</strong>, <strong>GE Command Centre cut ED wait 35%</strong> at Hopkins.
+          The pilot exists to produce the Irish-context number that replaces these.
+        </div>
       </div>
       <aside class="notes">
-        Lead with the €25-35M number. Then the 20,000 bed-days as the operationally crisp version. Then the lives-saved number for the human dimension. Don't over-explain — let the numbers carry it.
+        Lead with €25-35M, then 20,000 bed-days, then lives saved. CRITICAL: explicitly say "these are modelled, not measured — that's exactly why we're proposing a 12-week pilot." Don't let the Director silently assume these are validated outcomes.
       </aside>
     </section>
 
     <!-- 8. IMPACT (national) -->
     <section>
       <div class="stage">
-        <div class="eyebrow">Quantified impact · HSE national</div>
+        <div class="eyebrow">Quantified impact · HSE national · <span class="pill modelled">Modelled</span></div>
         <h2>Across the ~50 acute estate, mid-case envelope:</h2>
         <div class="grid grid-3" style="margin-top: 26px;">
           <div class="card green">
@@ -326,8 +333,8 @@
     <!-- 9. ROI table -->
     <section>
       <div class="stage" style="padding-top: 36px;">
-        <div class="eyebrow">Three-year business case · single Model 4 site</div>
-        <h2 style="margin-bottom: 16px;">Payback under 4 months. Net benefit Y3 ≈ €23.6M.</h2>
+        <div class="eyebrow">Three-year business case · single Model 4 site · <span class="pill modelled">Modelled — pilot must validate</span></div>
+        <h2 style="margin-bottom: 16px;">Projected payback &lt; 4 months. Y3 net benefit ≈ €23.6M.</h2>
         <table>
           <thead>
             <tr><th>Line item</th><th style="text-align: right;">Year 1</th><th style="text-align: right;">Year 2</th><th style="text-align: right;">Year 3</th></tr>
@@ -464,20 +471,23 @@
         <div style="margin-top: 22px; font-size: 0.85em; color: var(--ink-700); max-width: 56em; line-height: 1.55;">
           <p>
             I'm <strong>Harishankar Somasundaram</strong>, MSc Artificial Intelligence (Ireland).
-            I built this platform end-to-end as the technical embodiment of a thesis proposition:
-            Ireland's acute hospital crisis is not solvable by another point-product, and what is
-            missing is a single integrated AI substrate covering the front door, the ward, the
-            ICU, the cancer pathway and the back door.
+            Built this solo over my MSc — not as a commercial product, but as the working artefact
+            of a thesis: Ireland's acute crisis isn't solvable by another point-product, and the
+            missing piece is a single integrated AI substrate.
           </p>
           <p style="margin-top: 14px;">
-            I'm <strong>not</strong> proposing a sale. I'm proposing a collaboration — under HIHI,
-            under a research framework, or under HSE's AI &amp; Automation Centre of Excellence,
-            whichever is most compatible with how you'd like to evaluate it.
+            <strong>State, precisely:</strong> 19 services run end-to-end on a developer workstation.
+            None are clinically deployed. Models are MIMIC-IV-trained — Irish-data validation,
+            MTS retraining, ICD-10-AM alignment are explicit Phase 1 deliverables, not assumed.
+          </p>
+          <p style="margin-top: 14px;">
+            <strong>No commercial intent today.</strong> 12-week HIHI pilot at one site, falsification
+            clause included — if agreed metrics don't move by week 12, pilot ends and HSE owes nothing.
           </p>
         </div>
       </div>
       <aside class="notes">
-        Slow this down. Eye contact. The "collaboration not sale" framing is the entire reason a Director takes the meeting. They've been pitched by vendors a thousand times.
+        SLOW DOWN HERE. The Director has heard a hundred vendor pitches. The differentiator is honesty: "no commercial intent today, falsification clause included." Sit with the silence after that line. Let it land. Don't fill it.
       </aside>
     </section>
 
